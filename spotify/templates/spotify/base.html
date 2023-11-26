@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kogi Gospel</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'images/logospot.png' %}" type="image/x-icon">
+  </head>
+  <body>
+ 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: rgb(166, 255, 0);">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logospot.png' %}" height="50px">ogi Gospel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <li class="nav-item">
+         <button> <a class="nav-link" href="{% url 'create' %}">Add music</a></button>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">logout {{ user.username }}</a>
+        </li>
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container" id="app">
+    
+        {% block content %}
+        {% endblock %}
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
